@@ -5,7 +5,7 @@ const ListItem = ({ task }) => {
     <li className="list-group-item d-flex justify-content-between align-items-center">
       <span>
         {task.task}{" "}
-        {task.isCompleted ? (
+        {task.completed ? (
           <span className="text-success">✔️</span>
         ) : (
           <span className="text-danger">❌</span>
