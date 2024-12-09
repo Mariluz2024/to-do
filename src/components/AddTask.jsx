@@ -2,22 +2,32 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddTask = () => {
-  const [taskTitle, setTaskTitle] = useState(""); // Estado para el título de la tarea
-  const navigate = useNavigate(); // Hook para navegar
+  const [taskTitle, setTaskTitle] = useState("");
+  const navigate = useNavigate();
 
-  // Maneja el cambio en el campo de entrada
   const handleInputChange = (e) => {
     setTaskTitle(e.target.value);
   };
 
-  // Maneja la lógica para agregar la tarea al presionar "Enter"
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && taskTitle.trim() !== "") {
-      // Aquí puedes agregar la tarea a tu lista (podrías llamarlo a un backend o actualizar el estado global)
-      console.log(`Tarea agregada: ${taskTitle}`); // Simulación de agregar la tarea
-      setTaskTitle(""); // Limpia el campo de entrada
+      let tareas = localStorage.getItem("tareas");
 
-      // Navega al Dashboard
+      if (!tareas) {
+        tareas = [];
+      } else {
+        tareas = JSON.parse(tareas);
+      }
+
+      tareas.push({
+        task: taskTitle,
+        completed: false,
+      });
+
+      localStorage.setItem("tareas", JSON.stringify(tareas));
+
+      setTaskTitle("");
+
       navigate("/");
     }
   };

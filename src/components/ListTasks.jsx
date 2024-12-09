@@ -2,12 +2,18 @@ import React from "react";
 
 import ListItem from "./ListItem";
 
-import tasksData from "./../data/tasks.json";
-
 const ListTasks = () => {
+  let tareas = localStorage.getItem("tareas");
+  
+  if (!tareas) {
+    tareas = [];
+  } else {
+    tareas = JSON.parse(tareas);
+  }
+
   return (
     <ul>
-      {tasksData.map((task, i) => (
+      {tareas.map((task, i) => (
         <ListItem key={i} task={task} />
       ))}
     </ul>
