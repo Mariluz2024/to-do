@@ -4,19 +4,29 @@ const ListItem = ({ task: tarea, onDelete, onCompletar }) => {
   return (
     <li className="list-group-item d-flex justify-content-between align-items-center">
       <span>
-        {tarea.task}{" "}
         {tarea.completed ? (
           <span className="text-success">✔️</span>
         ) : (
           <span className="text-danger">❌</span>
-        )}
+        )}{" "}
+        {tarea.task}
       </span>
-      <button className="btn btn-success btn-sm" onClick={() => onCompletar(tarea.id)}>
-        Completar
-      </button>
-      <button className="btn btn-danger btn-sm" onClick={() => onDelete(tarea.id)}>
-        Eliminar
-      </button>
+      <div className="btn-group" role="group" aria-label="Basic example">
+        <button
+          className={`btn btn-sm ${
+            tarea.completed ? "btn-success" : "btn-warning"
+          }`}
+          onClick={() => onCompletar(tarea.id)}
+        >
+          {tarea.completed ? "Completada" : "Completar"}
+        </button>
+        <button
+          className="btn btn-danger btn-sm"
+          onClick={() => onDelete(tarea.id)}
+        >
+          Eliminar
+        </button>
+      </div>
     </li>
   );
 };

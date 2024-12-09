@@ -17,7 +17,7 @@ function App() {
       <NavBar />
       <div className="d-flex flex-grow-1">
         <Sidebar />
-        <div className="flex-grow-1">
+        <div className="flex-grow-1" style={{margin: '2em'}}>
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/item/:id" element={<ListItemDetails />} />
