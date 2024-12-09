@@ -17,15 +17,22 @@ const ListTasks = () => {
   };
 
   const handleCompletar = (tareaId) => {
-    const tareaIndice = tareas.findIndex((tarea) => tarea.id !== tareaId);
-    tareas[tareaIndice].completed = !tareas[tareaIndice].completed;
-    setTareas(tareas);
-  }
+    const tareasActualizadas = tareas.map((tarea) =>
+      tarea.id === tareaId ? { ...tarea, completed: !tarea.completed } : tarea
+    );
+    setTareas(tareasActualizadas);
+    localStorage.setItem("tareas", JSON.stringify(tareasActualizadas));
+  };
 
   return (
     <ul>
       {tareas.map((tarea) => (
-        <ListItem key={tarea.id} task={tarea} onDelete={handleDelete} onCompletar={handleCompletar} />
+        <ListItem
+          key={tarea.id}
+          task={tarea}
+          onDelete={handleDelete}
+          onCompletar={handleCompletar}
+        />
       ))}
     </ul>
   );
