@@ -27,6 +27,7 @@ const AddTask = () => {
         id: generateRandomId(),
         task: taskTitle,
         completed: false,
+        fecha: new Date().toString()
       });
 
       localStorage.setItem("tareas", JSON.stringify(tareas));

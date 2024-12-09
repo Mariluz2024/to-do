@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ListItem = ({ task: tarea, onDelete, onCompletar }) => {
   return (
@@ -9,7 +10,9 @@ const ListItem = ({ task: tarea, onDelete, onCompletar }) => {
         ) : (
           <span className="text-danger">❌</span>
         )}{" "}
-        {tarea.task}
+        <Link to={`/item/${tarea.id}`} className="text-decoration-none">
+          {tarea.task}
+        </Link>
       </span>
       <div className="btn-group" role="group" aria-label="Basic example">
         <button
