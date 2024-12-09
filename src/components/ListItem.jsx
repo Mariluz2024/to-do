@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListItem = ({ task }) => {
+const ListItem = ({ task, onDelete }) => {
   return (
     <li className="list-group-item d-flex justify-content-between align-items-center">
       <span>
@@ -11,7 +11,7 @@ const ListItem = ({ task }) => {
           <span className="text-danger">❌</span>
         )}
       </span>
-      <button className="btn btn-danger btn-sm">
+      <button className="btn btn-danger btn-sm" onClick={() => onDelete(task.id)}>
         Eliminar
       </button>
     </li>
