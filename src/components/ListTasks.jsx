@@ -16,10 +16,16 @@ const ListTasks = () => {
     setTareas(updatedTasks);
   };
 
+  const handleCompletar = (tareaId) => {
+    const tareaIndice = tareas.findIndex((tarea) => tarea.id !== tareaId);
+    tareas[tareaIndice].completed = !tareas[tareaIndice].completed;
+    setTareas(tareas);
+  }
+
   return (
     <ul>
       {tareas.map((tarea) => (
-        <ListItem key={tarea.id} task={tarea} onDelete={handleDelete} />
+        <ListItem key={tarea.id} task={tarea} onDelete={handleDelete} onCompletar={handleCompletar} />
       ))}
     </ul>
   );
