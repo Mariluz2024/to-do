@@ -12,8 +12,9 @@ const ListTasks = () => {
   }, []);
 
   const handleDelete = (tareaId) => {
-    const updatedTasks = tareas.filter((tarea) => tarea.id !== tareaId);
-    setTareas(updatedTasks);
+    const tareasActualizadas = tareas.filter((tarea) => tarea.id !== tareaId);
+    localStorage.setItem("tareas", JSON.stringify(tareasActualizadas));
+    setTareas(tareasActualizadas);
   };
 
   const handleCompletar = (tareaId) => {
