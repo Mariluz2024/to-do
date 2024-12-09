@@ -1,8 +1,10 @@
 import React from "react";
 
+import ListTasks from './ListTasks'
+
 const Dashboard = () => {
   return (
-    <h2>Este es el dashboard</h2>
+    <ListTasks />
   );
 };
 
