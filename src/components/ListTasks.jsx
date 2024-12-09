@@ -3,11 +3,19 @@ import { useEffect, useState } from "react";
 
 import ListItem from "./ListItem";
 
+import initialTasks from "../data/tasks.json"
+
 const ListTasks = () => {
   const [tareas, setTareas] = useState([]);
 
   useEffect(() => {
-    const tareasAlmacenadas = JSON.parse(localStorage.getItem("tareas")) || [];
+    let tareasAlmacenadas = JSON.parse(localStorage.getItem("tareas")) || [];
+
+    if (!tareasAlmacenadas.length) {
+      tareasAlmacenadas = initialTasks;
+      localStorage.setItem("tareas", JSON.stringify(tareasAlmacenadas));
+    }
+
     setTareas(tareasAlmacenadas);
   }, []);
 
