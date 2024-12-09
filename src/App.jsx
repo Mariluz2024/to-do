@@ -1,9 +1,12 @@
+import React from 'react'
+import {Routes, Route, Link} from 'react-router-dom'
+
 import "./App.css";
 
 import NavBar from "./components/NavBar"
 import Sidebar from './components/Sidebar'
-import ListTasks from './components/ListTasks'
 import Footer from './components/Footer'
+import Dashboard from './components/Dashboard'
 
 function App() {
   return (
@@ -12,7 +15,9 @@ function App() {
       <div className="d-flex flex-grow-1">
         <Sidebar />
         <div className="flex-grow-1">
-          <ListTasks />
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+          </Routes>
         </div>
       </div>
       <Footer />
