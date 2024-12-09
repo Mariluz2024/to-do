@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard";
 import ListItemDetails from "./components/ListItemDetails";
 import About from "./components/About";
 import AddTask from "./components/AddTask";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/item/:id" element={<ListItemDetails />} />
             <Route path="/add-task" element={<AddTask />} />
             <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </div>
