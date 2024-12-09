@@ -9,6 +9,10 @@ const AddTask = () => {
     setTaskTitle(e.target.value);
   };
 
+  const generateRandomId = () => {
+    return Math.random().toString(36).substring(2, 10);
+  }
+
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && taskTitle.trim() !== "") {
       let tareas = localStorage.getItem("tareas");
@@ -20,6 +24,7 @@ const AddTask = () => {
       }
 
       tareas.push({
+        id: generateRandomId(),
         task: taskTitle,
         completed: false,
       });

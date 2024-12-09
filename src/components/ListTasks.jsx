@@ -4,26 +4,22 @@ import { useEffect, useState } from "react";
 import ListItem from "./ListItem";
 
 const ListTasks = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tareas, setTareas] = useState([]);
 
   useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    setTasks(storedTasks);
+    const tareasAlmacenadas = JSON.parse(localStorage.getItem("tareas")) || [];
+    setTareas(tareasAlmacenadas);
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
-
-  const handleDelete = (taskId) => {
-    const updatedTasks = tasks.filter((task) => task.id !== taskId);
-    setTasks(updatedTasks);
+  const handleDelete = (tareaId) => {
+    const updatedTasks = tareas.filter((tarea) => tarea.id !== tareaId);
+    setTareas(updatedTasks);
   };
 
   return (
     <ul>
-      {tareas.map((task, i) => (
-        <ListItem key={i} task={task} onDelete={handleDelete} />
+      {tareas.map((tarea) => (
+        <ListItem key={tarea.id} task={tarea} onDelete={handleDelete} />
       ))}
     </ul>
   );
